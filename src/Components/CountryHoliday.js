@@ -5,11 +5,12 @@ import Countries from "./Countries";
 const CountryHoliday = () => {
 
     const [selectedCountry, setCountry] = useState('')
+
     return (
         <div className={"ui segment"}>
             <div className={'ui two column very relaxed grid'}>
                 <div className={'column'}>
-                    <Countries selectedCountry={setCountry}/>
+                    <Countries onSelectedCountry={(country) => setCountry(country)}/>
                 </div>
 
                 <div className={'column'}>

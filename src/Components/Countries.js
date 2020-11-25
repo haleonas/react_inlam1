@@ -1,16 +1,7 @@
-import React, {useState, useEffect} from 'react'
-import axios from 'axios'
+import useCountries from "../Hooks/useCountries";
 
-const Countries = props => {
-    const [countries, setCountries] = useState(null)
-
-    useEffect(() => {
-        async function fetchData() {
-            const response = await axios.get('https://calendarific.com/api/v2/countries?&api_key=01de13b4b8e3d6aa6e47d26cf5cc62f8017b61eb')
-            setCountries(response.data.response.countries)
-        }
-        fetchData().then()
-    }, [])
+const Countries = ({onSelectedCountry}) => {
+    const [countries,errorMessage] = useCountries()
 
     const renderList = () => {
         return countries.map(country => {
@@ -20,9 +11,10 @@ const Countries = props => {
 
     return (
         <div className={'ui form'}>
-            <select onChange={event => props.selectedCountry(event.target.value)}>
+            <select onChange={event => onSelectedCountry(event.target.value)}>
                 <option value={""}/>
                 {countries && renderList()}
+                {errorMessage ? errorMessage : null}
             </select>
         </div>
     )
