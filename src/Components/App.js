@@ -20,7 +20,6 @@ const App = () => {
                         <Route path={'/'} exact component={Main}/>
                         <Route path={'/country-holidays'} exact component={CountryHoliday}/>
                     </div>
-
                 </UserContext.Provider>
             </BrowserRouter>
         </div>

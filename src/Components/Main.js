@@ -30,7 +30,6 @@ const Main = () => {
                     </form>
                 </div>
             )}
-
         </Formik>
     )
 }
