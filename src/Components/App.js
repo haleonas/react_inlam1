@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
-import {BrowserRouter, Route} from "react-router-dom";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import 'semantic-ui-css/semantic.css'
-
 import Main from "./Main";
 import Header from "./Header";
 import CountryHoliday from "./CountryHoliday";
@@ -17,8 +16,10 @@ const App = () => {
                 <UserContext.Provider value={{user, setUser}}>
                     <div>
                         <Header/>
-                        <Route path={'/'} exact component={Main}/>
-                        <Route path={'/country-holidays'} exact component={CountryHoliday}/>
+                        <Switch>
+                            <Route path={'/'} exact component={Main}/>
+                            <Route path={'/country-holidays'} exact component={CountryHoliday}/>
+                        </Switch>
                     </div>
                 </UserContext.Provider>
             </BrowserRouter>
